@@ -9,31 +9,27 @@ function Square(props) {
 	);
 }
 
-class Board extends React.Component {
-
-	render() {
-		const squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-		return (
-			<div>
-				{squares.map(row => {
-					return (
-						<div className="board-row" key={row}>
-							{row.map(id => {
-								return (
-									<Square
-										value={this.props.squares[id]}
-										onClick={() => this.props.onClick(id)}
-										key={id}
-									/>
-								);
-							})}
-						</div>
-					)
-				})}
-			</div>
-		);
-	}
-	
+function Board(props) {
+	const squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+	return (
+		<div>
+			{squares.map(row => {
+				return (
+					<div className="board-row" key={row}>
+						{row.map(id => {
+							return (
+								<Square
+									value={props.squares[id]}
+									onClick={() => props.onClick(id)}
+									key={id}
+								/>
+							);
+						})}
+					</div>
+				);
+			})}
+		</div>
+	);
 }
 
 class Game extends React.Component {
